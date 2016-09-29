@@ -121,12 +121,14 @@ int contaNos(Lista* l, int cont) {
 void listaImprimir(Lista* l) {
 	Lista* p;
 
-	for (p = l; p != NULL; p = p->proxima) {
+	if (p==NULL) {
 
-		cout << p->numMat << endl;
-		cout << p->media << endl;
-		cout << p->proxima << endl;
-		cout << "\n\n\n";
+		cout << "Lista está vazia" << endl;
+
+	}
+
+	for (p = l; p != NULL; p = p->proxima) {
+      
 	}
 
 	cout << "Tamanho da Lista : " << contaNos(l) << endl;
@@ -163,11 +165,10 @@ Lista* insirirAluno(Lista* l, int mat, string nom, float nota) {
 	}
 	else 
 	{
-
 		novo->proxima =x->proxima;
 		x->proxima = novo;
 	}
-	return l;
+	return l;
 
 }
 
