@@ -1,6 +1,6 @@
 #include "stdafx.h" // Include exclusivo do visual studio
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 typedef struct Lista {
@@ -30,18 +30,18 @@ int main()
 
 	Lista * a = NULL;
 
-	a = insirirAluno(a, 1, "Gustavo", 3.0);
-	a = insirirAluno(a, 2, "Cardoso", 3.0);
-	a = insirirAluno(a, 3, "Ze", 4.0);
+	a = insirirAluno(a, 1,  "Cardoso", 3.0);
+	a = insirirAluno(a, 2, "Gustavo", 3.0);
+	a = insirirAluno(a, 3,   "Ze", 4.0);
 
-	
+
 	Aluno = insirirAluno(Aluno, 1, "Cardoso", 3.0);
 	Aluno = insirirAluno(Aluno, 10, "Gustavo", 3.0);
 	Aluno = insirirAluno(Aluno, 3, "Ze", 4.0);
 
 	listaImprimir(Aluno);
 
-	//cout << "\n" << listaIguais(Aluno, a);
+	cout << "\n" << lista_Iguais(Aluno, a);
 	//cout << "\n" << listaIguais(Aluno, a);
 	cin.get();
 	cin.get();
@@ -110,7 +110,7 @@ int contaNos(Lista* l, int cont) {
 	if (l != NULL)
 	{
 		l = l->proxima;
-		contaNos(l, cont += 1);
+		return contaNos(l, cont += 1);
 	}
 
 	if (l == NULL)
@@ -119,7 +119,7 @@ int contaNos(Lista* l, int cont) {
 }
 
 void listaImprimir(Lista* l) {
-	Lista* p;
+	Lista* p = l;
 
 	if (p==NULL) {
 
@@ -129,13 +129,18 @@ void listaImprimir(Lista* l) {
 
 	for (p = l; p != NULL; p = p->proxima) {
       
+		cout << p->numMat << endl;
+		cout << p->nome << endl;
+		cout << p->media << endl;
+
+		cout << "\n\n\n" ;
 	}
 
 	cout << "Tamanho da Lista : " << contaNos(l) << endl;
 
 	cout << "Tamanho da Lista com Recursividade : " << contaNos(l, 0) << endl;
 
-	cout << "Altura do no  e : " << listaAltura(l, 6) << endl;
+	cout << "Altura do no  e : " << listaAltura(l, 2) << endl;
 
 	cout << "Profundidade do no  e : " << listaProfundidade(l, 1);
 }
