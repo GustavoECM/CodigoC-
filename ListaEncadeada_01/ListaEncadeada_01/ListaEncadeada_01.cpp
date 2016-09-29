@@ -135,14 +135,6 @@ void listaImprimir(Lista* l) {
 
 		cout << "\n\n\n" ;
 	}
-
-	cout << "Tamanho da Lista : " << contaNos(l) << endl;
-
-	cout << "Tamanho da Lista com Recursividade : " << contaNos(l, 0) << endl;
-
-	cout << "Altura do no  e : " << listaAltura(l, 2) << endl;
-
-	cout << "Profundidade do no  e : " << listaProfundidade(l, 1);
 }
 
 Lista* insirirAluno(Lista* l, int mat, string nom, float nota) {
