@@ -34,15 +34,15 @@ int main()
 	a = insirirAluno(a, 2, "Cardoso", 3.0);
 	a = insirirAluno(a, 3, "Ze", 4.0);
 
-	Aluno = insirirAluno(Aluno, 10, "Gustavo", 3.0);
+	
 	Aluno = insirirAluno(Aluno, 1, "Cardoso", 3.0);
+	Aluno = insirirAluno(Aluno, 10, "Gustavo", 3.0);
 	Aluno = insirirAluno(Aluno, 3, "Ze", 4.0);
 
 	listaImprimir(Aluno);
-	listaImprimir(a);
 
-	cout << "\n" << listaIguais(Aluno, a);
-	cout << "\n" << listaIguais(Aluno, a);
+	//cout << "\n" << listaIguais(Aluno, a);
+	//cout << "\n" << listaIguais(Aluno, a);
 	cin.get();
 	cin.get();
 	return 0;
@@ -124,7 +124,6 @@ void listaImprimir(Lista* l) {
 	for (p = l; p != NULL; p = p->proxima) {
 
 		cout << p->numMat << endl;
-	    cout << p->nome<<endl;
 		cout << p->media << endl;
 		cout << p->proxima << endl;
 		cout << "\n\n\n";
@@ -142,6 +141,7 @@ void listaImprimir(Lista* l) {
 Lista* insirirAluno(Lista* l, int mat, string nom, float nota) {
 
 	Lista* p;
+	Lista* x = NULL;
 	Lista* novo = new Lista;
 
 	novo->numMat = mat;
@@ -150,12 +150,24 @@ Lista* insirirAluno(Lista* l, int mat, string nom, float nota) {
 
 	p = l;
 
-	if (p == NULL) {
-
-		p = novo;
-
-		return p;
+	while (p != NULL && p->numMat < mat)
+	{
+		x = p; p = p->proxima;    
 	}
+	
+	novo->numMat = mat;   
+	
+	if (x == NULL)
+	{
+		novo->proxima = l; l = novo;    
+	}
+	else 
+	{
+
+		novo->proxima =x->proxima;
+		x->proxima = novo;
+	}
+	return l;
 
 }
 
