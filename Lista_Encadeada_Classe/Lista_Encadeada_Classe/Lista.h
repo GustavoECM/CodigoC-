@@ -5,7 +5,7 @@ using namespace std;
 
 typedef struct Listah {
 	int numMat;
-	string nome;
+	string nome;  
 	float media;
 	struct  Listah* proxima; //aponta para a proxima lista de alunos.
 }Listah;
