@@ -1,4 +1,4 @@
-#include "stdafx.h" // Include exclusivo do visual studio
+#include "stdafx.h" // Include exclusivo do visual studio se não for visual studio
 #include <iostream>
 #include <string>
 using namespace std;
@@ -28,26 +28,23 @@ int main()
 
 	Lista* Aluno = NULL;
 
-	Lista * a = NULL;
-
-	a = insirirAluno(a, 1,  "Cardoso", 3.0);
-	a = insirirAluno(a, 2, "Gustavo", 3.0);
-	a = insirirAluno(a, 3,   "Ze", 4.0);
-
-
 	Aluno = insirirAluno(Aluno, 1, "Cardoso", 3.0);
 	Aluno = insirirAluno(Aluno, 10, "Gustavo", 3.0);
 	Aluno = insirirAluno(Aluno, 3, "Ze", 4.0);
 
 	listaImprimir(Aluno);
 
-	cout << "\n" << lista_Iguais(Aluno, a);
-	//cout << "\n" << listaIguais(Aluno, a);
+	cout << "\n" << lista_Iguais(Aluno, a); // com recursividade 
+
+	cout << "\n" << listaIguais(Aluno, a); //sem recursividade
+	
 	cin.get();
 	cin.get();
 	return 0;
 }
 
+
+//Função Recursivsa
 int lista_Iguais(Lista* l, Lista* m) {
 
 	if (l == NULL &&  m == NULL)
@@ -62,6 +59,7 @@ int lista_Iguais(Lista* l, Lista* m) {
 	}
 }
 
+//Função sem recursividade
 int listaIguais(Lista* l, Lista* m) {
 	Lista * l1;
 	Lista * l2;
@@ -95,6 +93,7 @@ int listaAltura(Lista* l, int mat) {
 	return cont;
 }
 
+//Função sem recursividade
 int contaNos(Lista* l) {
 	int cont = 0;
 
@@ -105,12 +104,13 @@ int contaNos(Lista* l) {
 	return cont;
 }
 
+//Função sem recursividade
 int contaNos(Lista* l, int cont) {
 
 	if (l != NULL)
 	{
-		l = l->proxima;
-		return contaNos(l, cont += 1);
+		return contaNos(l = l->proxima, cont += 1);
+	
 	}
 
 	if (l == NULL)
@@ -151,15 +151,19 @@ Lista* insirirAluno(Lista* l, int mat, string nom, float nota) {
 
 	while (p != NULL && p->numMat < mat)
 	{
-		x = p; p = p->proxima;    
+		x = p; 
+		p = p->proxima;    
 	}
 	
 	novo->numMat = mat;   
-	
+
+	//inseri o valor no fim
 	if (x == NULL)
 	{
-		novo->proxima = l; l = novo;    
+		novo->proxima = l;
+		l = novo;    
 	}
+	//inserir o valor no meio
 	else 
 	{
 		novo->proxima =x->proxima;
