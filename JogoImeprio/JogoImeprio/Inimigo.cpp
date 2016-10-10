@@ -5,13 +5,11 @@
 
 using namespace std;
 
-Inimigo::Inimigo()
+void Inimigo::inserirInimigo(int id, string n, int l, int nt)
 {
+  
 
-}
 
-inimigo Inimigo::setNome(string n) {
-	ini.nome = n;
 }
 
 
