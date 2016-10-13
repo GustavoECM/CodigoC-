@@ -56,7 +56,7 @@ void imprimirFila(Fila *p) {
 	cout << endl;
 }
 
-
+//Insere um item na fila
 void push(Fila *p, int val) {
 	if (p->total == 10) {
 		cout << "Estorou memoria";
@@ -68,7 +68,7 @@ void push(Fila *p, int val) {
 	}
 }
 
-
+//Retira o primeiro indice da lista.
 int pop(Fila *p) {
 
 	int v = p->vet[p->primeiro];
